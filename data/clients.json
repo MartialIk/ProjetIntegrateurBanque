@@ -1,0 +1,38 @@
+[
+  {
+    "id": "client-1",
+    "nom": "Dubois",
+    "prenom": "Marie",
+    "email": "marie.dubois@example.com",
+    "telephone": "514-555-0101",
+    "adresse": "123 Rue Principale, Montréal, QC",
+    "dateCreation": "2024-01-15T10:30:00.000Z"
+  },
+  {
+    "id": "client-2",
+    "nom": "Tremblay",
+    "prenom": "Jean",
+    "email": "jean.tremblay@example.com",
+    "telephone": "514-555-0102",
+    "adresse": "456 Avenue du Parc, Montréal, QC",
+    "dateCreation": "2024-02-20T14:20:00.000Z"
+  },
+  {
+    "id": "client-3",
+    "nom": "Gagnon",
+    "prenom": "Sophie",
+    "email": "sophie.gagnon@example.com",
+    "telephone": "514-555-0103",
+    "adresse": "789 Boulevard Saint-Laurent, Montréal, QC",
+    "dateCreation": "2024-03-10T09:15:00.000Z"
+  },
+  {
+    "id": "client-4",
+    "nom": "Roy",
+    "prenom": "Pierre",
+    "email": "pierre.roy@example.com",
+    "telephone": "514-555-0104",
+    "adresse": "321 Rue Sherbrooke, Montréal, QC",
+    "dateCreation": "2024-04-05T16:45:00.000Z"
+  }
+]

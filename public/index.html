@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banque Pédagogique</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="screen">
+        <div class="login-container">
+            <div class="login-header">
+                <h1>🏦 Banque Pédagogique</h1>
+                <p>Système de simulation bancaire pour étudiants</p>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Nom d'utilisateur</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Se connecter</button>
+                <div id="loginError" class="error-message"></div>
+                <div class="login-help">
+                    <p><strong>Comptes de démonstration:</strong></p>
+                    <p>Enseignant: <code>enseignant</code> / <code>prof2024</code></p>
+                    <p>Étudiant: <code>etudiant</code> / <code>etudiant2024</code></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="appScreen" class="screen hidden">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <h1>🏦 Banque Pédagogique</h1>
+                <div class="user-info">
+                    <span id="userDisplay"></span>
+                    <button id="logoutBtn" class="btn btn-secondary">Déconnexion</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="main-nav">
+            <button class="nav-btn active" data-view="dashboard">Tableau de bord</button>
+            <button class="nav-btn" data-view="clients">Clients</button>
+            <button class="nav-btn" data-view="accounts">Comptes</button>
+            <button class="nav-btn" data-view="transactions">Transactions</button>
+            <button class="nav-btn teacher-only" data-view="admin">Administration</button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard View -->
+            <div id="dashboardView" class="view active">
+                <h2>Tableau de bord</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Clients</h3>
+                        <p class="stat-value" id="totalClients">-</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Comptes</h3>
+                        <p class="stat-value" id="totalAccounts">-</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Transactions</h3>
+                        <p class="stat-value" id="totalTransactions">-</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Solde Total</h3>
+                        <p class="stat-value" id="totalBalance">-</p>
+                    </div>
+                </div>
+                <div class="recent-section">
+                    <h3>Transactions récentes</h3>
+                    <div id="recentTransactions"></div>
+                </div>
+            </div>
+
+            <!-- Clients View -->
+            <div id="clientsView" class="view">
+                <div class="view-header">
+                    <h2>Gestion des Clients</h2>
+                    <button class="btn btn-primary teacher-only" id="addClientBtn">Ajouter Client</button>
+                </div>
+                <div id="clientsList" class="data-table"></div>
+            </div>
+
+            <!-- Accounts View -->
+            <div id="accountsView" class="view">
+                <div class="view-header">
+                    <h2>Gestion des Comptes</h2>
+                    <button class="btn btn-primary teacher-only" id="addAccountBtn">Ajouter Compte</button>
+                </div>
+                <div class="filter-section">
+                    <label for="clientFilter">Filtrer par client:</label>
+                    <select id="clientFilter">
+                        <option value="">Tous les clients</option>
+                    </select>
+                </div>
+                <div id="accountsList" class="data-table"></div>
+            </div>
+
+            <!-- Transactions View -->
+            <div id="transactionsView" class="view">
+                <div class="view-header">
+                    <h2>Transactions</h2>
+                    <div>
+                        <button class="btn btn-primary" id="transferBtn">Virement</button>
+                        <button class="btn btn-primary" id="paymentBtn">Paiement</button>
+                    </div>
+                </div>
+                <div id="transactionsList" class="data-table"></div>
+            </div>
+
+            <!-- Admin View (Teacher only) -->
+            <div id="adminView" class="view teacher-only">
+                <h2>Administration</h2>
+                <div class="admin-section">
+                    <h3>Statistiques détaillées</h3>
+                    <div id="detailedStats"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal for Add/Edit Client -->
+    <div id="clientModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="clientModalTitle">Ajouter Client</h2>
+                <span class="close">&times;</span>
+            </div>
+            <form id="clientForm">
+                <div class="form-group">
+                    <label for="clientNom">Nom *</label>
+                    <input type="text" id="clientNom" required>
+                </div>
+                <div class="form-group">
+                    <label for="clientPrenom">Prénom *</label>
+                    <input type="text" id="clientPrenom" required>
+                </div>
+                <div class="form-group">
+                    <label for="clientEmail">Email *</label>
+                    <input type="email" id="clientEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="clientTelephone">Téléphone</label>
+                    <input type="tel" id="clientTelephone">
+                </div>
+                <div class="form-group">
+                    <label for="clientAdresse">Adresse</label>
+                    <textarea id="clientAdresse" rows="3"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary close">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for Add Account -->
+    <div id="accountModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Ajouter Compte</h2>
+                <span class="close">&times;</span>
+            </div>
+            <form id="accountForm">
+                <div class="form-group">
+                    <label for="accountClient">Client *</label>
+                    <select id="accountClient" required>
+                        <option value="">Sélectionnez un client</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="accountType">Type de compte *</label>
+                    <select id="accountType" required>
+                        <option value="cheques">Compte Chèques</option>
+                        <option value="epargne">Compte Épargne</option>
+                        <option value="credit">Compte Crédit</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="accountBalance">Solde initial</label>
+                    <input type="number" id="accountBalance" step="0.01" value="0">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary close">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Créer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for Transfer -->
+    <div id="transferModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Effectuer un Virement</h2>
+                <span class="close">&times;</span>
+            </div>
+            <form id="transferForm">
+                <div class="form-group">
+                    <label for="transferSource">Compte source *</label>
+                    <select id="transferSource" required>
+                        <option value="">Sélectionnez un compte</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="transferDest">Compte destination *</label>
+                    <select id="transferDest" required>
+                        <option value="">Sélectionnez un compte</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="transferAmount">Montant *</label>
+                    <input type="number" id="transferAmount" step="0.01" required min="0.01">
+                </div>
+                <div class="form-group">
+                    <label for="transferDesc">Description</label>
+                    <input type="text" id="transferDesc" placeholder="Ex: Virement mensuel">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary close">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Effectuer le virement</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for Payment -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Effectuer un Paiement</h2>
+                <span class="close">&times;</span>
+            </div>
+            <form id="paymentForm">
+                <div class="form-group">
+                    <label for="paymentSource">Compte source *</label>
+                    <select id="paymentSource" required>
+                        <option value="">Sélectionnez un compte</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="paymentBeneficiary">Bénéficiaire *</label>
+                    <input type="text" id="paymentBeneficiary" required placeholder="Ex: Hydro-Québec">
+                </div>
+                <div class="form-group">
+                    <label for="paymentAmount">Montant *</label>
+                    <input type="number" id="paymentAmount" step="0.01" required min="0.01">
+                </div>
+                <div class="form-group">
+                    <label for="paymentDesc">Description</label>
+                    <input type="text" id="paymentDesc" placeholder="Ex: Facture électricité">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary close">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Effectuer le paiement</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

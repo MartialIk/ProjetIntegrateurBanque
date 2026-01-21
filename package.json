@@ -1,0 +1,20 @@
+{
+  "name": "projetintegrateurbanque",
+  "version": "1.0.0",
+  "description": "Projet Intégrateur de la Banque. Membres : Seyfeddine, Kamilia",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node backend/server.js",
+    "test": "echo \"No tests specified\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "cors": "^2.8.5",
+    "express": "^5.2.1",
+    "uuid": "^13.0.0"
+  }
+}
