@@ -1,0 +1,56 @@
+[
+  {
+    "id": "account-1",
+    "numeroCompte": "CA1705315800123",
+    "clientId": "client-1",
+    "type": "cheques",
+    "solde": 2500.50,
+    "dateCreation": "2024-01-15T10:30:00.000Z",
+    "actif": true
+  },
+  {
+    "id": "account-2",
+    "numeroCompte": "CA1705315800456",
+    "clientId": "client-1",
+    "type": "epargne",
+    "solde": 10000.00,
+    "dateCreation": "2024-01-15T10:32:00.000Z",
+    "actif": true
+  },
+  {
+    "id": "account-3",
+    "numeroCompte": "CA1708027200789",
+    "clientId": "client-2",
+    "type": "cheques",
+    "solde": 1500.75,
+    "dateCreation": "2024-02-20T14:20:00.000Z",
+    "actif": true
+  },
+  {
+    "id": "account-4",
+    "numeroCompte": "CA1710186100321",
+    "clientId": "client-3",
+    "type": "cheques",
+    "solde": 3200.00,
+    "dateCreation": "2024-03-10T09:15:00.000Z",
+    "actif": true
+  },
+  {
+    "id": "account-5",
+    "numeroCompte": "CA1710186100654",
+    "clientId": "client-3",
+    "type": "credit",
+    "solde": -500.00,
+    "dateCreation": "2024-03-10T09:17:00.000Z",
+    "actif": true
+  },
+  {
+    "id": "account-6",
+    "numeroCompte": "CA1712268300987",
+    "clientId": "client-4",
+    "type": "epargne",
+    "solde": 5000.00,
+    "dateCreation": "2024-04-05T16:45:00.000Z",
+    "actif": true
+  }
+]

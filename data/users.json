@@ -1,0 +1,16 @@
+[
+  {
+    "id": "user-teacher-1",
+    "username": "enseignant",
+    "password": "prof2024",
+    "role": "enseignant",
+    "nom": "Professeur Admin"
+  },
+  {
+    "id": "user-student-1",
+    "username": "etudiant",
+    "password": "etudiant2024",
+    "role": "etudiant",
+    "nom": "Étudiant Demo"
+  }
+]
