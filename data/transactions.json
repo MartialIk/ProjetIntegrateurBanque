@@ -4,7 +4,7 @@
     "type": "virement",
     "compteSource": "account-1",
     "compteDestination": "account-2",
-    "montant": 500.00,
+    "montant": 500,
     "description": "Épargne mensuelle",
     "date": "2024-05-01T10:00:00.000Z",
     "status": "complete"
@@ -13,7 +13,7 @@
     "id": "trans-2",
     "type": "paiement",
     "compteSource": "account-1",
-    "montant": 150.00,
+    "montant": 150,
     "beneficiaire": "Hydro-Québec",
     "description": "Facture électricité",
     "date": "2024-05-05T14:30:00.000Z",
@@ -24,7 +24,7 @@
     "type": "virement",
     "compteSource": "account-3",
     "compteDestination": "account-1",
-    "montant": 200.00,
+    "montant": 200,
     "description": "Remboursement",
     "date": "2024-05-10T09:15:00.000Z",
     "status": "complete"
@@ -33,7 +33,7 @@
     "id": "trans-4",
     "type": "paiement",
     "compteSource": "account-4",
-    "montant": 75.50,
+    "montant": 75.5,
     "beneficiaire": "Bell Canada",
     "description": "Facture téléphone",
     "date": "2024-05-12T16:20:00.000Z",
@@ -44,9 +44,19 @@
     "type": "virement",
     "compteSource": "account-6",
     "compteDestination": "account-4",
-    "montant": 1000.00,
+    "montant": 1000,
     "description": "Transfert d'urgence",
     "date": "2024-05-15T11:45:00.000Z",
+    "status": "complete"
+  },
+  {
+    "id": "b6635722-6da7-4ee4-94d0-3fdabd0706cc",
+    "type": "virement",
+    "compteSource": "account-1",
+    "compteDestination": "account-2",
+    "montant": 100,
+    "description": "Test virement",
+    "date": "2026-01-21T00:55:02.518Z",
     "status": "complete"
   }
 ]
